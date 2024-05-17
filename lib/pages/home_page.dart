@@ -1,5 +1,5 @@
 import 'package:expenses_app/widgets/bar_graph.dart';
-import 'package:expenses_app/widgets/list_tile_item.dart';
+import 'package:expenses_app/widgets/list_tile_list_view.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -11,39 +11,40 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 30,
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 30,
+                ),
               ),
-              Row(
-                children: [
-                  Text(
-                    'Week Total: ',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
+              SliverToBoxAdapter(
+                child: Row(
+                  children: [
+                    Text(
+                      'Week Total: ',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  Text('\$34.5'),
-                ],
+                    Text('\$34.5'),
+                  ],
+                ),
               ),
-              SizedBox(
-                height: 30,
+              SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 30,
+                ),
               ),
-              BarGraph(),
-              SizedBox(
-                height: 30,
+              SliverToBoxAdapter(
+                child: BarGraph(),
               ),
-              ListTileItem(),
-              ListTileItem(),
-              ListTileItem(),
-              //ListTileItem(),
-              // ListTileItem(),
-              // ListTileItem(),
-              // ListTileItem(),
-              // ListTileItem(),
-              // ListTileItem(),
-              // ListTileItem(),
+              SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 30,
+                ),
+              ),
+              ListTileListView()
             ],
           ),
         ),
