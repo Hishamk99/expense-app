@@ -1,4 +1,6 @@
+import 'package:expenses_app/widgets/bar_graph.dart';
 import 'package:flutter/material.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -9,7 +11,7 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         body: Column(
           children: [
-            Row(
+             Row(
               children: [
                 Text(
                   'Week Total: ',
@@ -20,9 +22,15 @@ class HomePage extends StatelessWidget {
                 Text('\$34.5'),
               ],
             ),
+            SizedBox(
+              height: 30,
+            ),
+            BarGraph(),
           ],
         ),
       ),
     );
   }
 }
+
+
