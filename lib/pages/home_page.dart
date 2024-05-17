@@ -7,9 +7,17 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
-        body: Padding(
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.black,
+          onPressed: () {},
+          child: Icon(
+            Icons.add,
+            color: Colors.grey[100],
+          ),
+        ),
+        body: const Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: CustomScrollView(
             slivers: [
