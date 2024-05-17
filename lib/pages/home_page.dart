@@ -6,7 +6,23 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SafeArea(
-      child: Scaffold(),
+      child: Scaffold(
+        body: Column(
+          children: [
+            Row(
+              children: [
+                Text(
+                  'Week Total: ',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text('\$34.5'),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
