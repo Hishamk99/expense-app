@@ -1,5 +1,6 @@
 import 'package:expenses_app/widgets/bar_graph.dart';
 import 'package:expenses_app/widgets/list_tile_list_view.dart';
+import 'package:expenses_app/widgets/show_aler_dialog.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -11,7 +12,14 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.black,
-          onPressed: () {},
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return const ShowAlertDialog();
+              },
+            );
+          },
           child: Icon(
             Icons.add,
             color: Colors.grey[100],
