@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
+import 'custom_text_field.dart';
 
 class ShowAlertDialog extends StatelessWidget {
   const ShowAlertDialog({
@@ -12,7 +15,27 @@ class ShowAlertDialog extends StatelessWidget {
       content: const Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          TextField(),
+          CustomTextField(
+            textInputType: TextInputType.name,
+            hintText: 'Add new expense',
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: CustomTextField(
+                  hintText: 'Dollars',
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                child: CustomTextField(
+                  hintText: 'Cents',
+                ),
+              ),
+            ],
+          ),
         ],
       ),
       actions: [

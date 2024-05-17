@@ -10,10 +10,12 @@ class ListTileListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverList(
-      delegate: SliverChildBuilderDelegate(childCount: 10,
-          (context, index) {
-        return const ListTileItem();
-      }),
+      delegate: SliverChildBuilderDelegate(
+        childCount: 10,
+        (context, index) {
+          return const ListTileItem();
+        },
+      ),
     );
   }
 }
