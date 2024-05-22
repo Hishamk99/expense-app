@@ -1,4 +1,5 @@
-import 'package:expenses_app/widgets/bar_graph.dart';
+import 'package:expenses_app/helper/convert_date_to_string.dart';
+import 'package:expenses_app/widgets/expense_summary.dart';
 import 'package:expenses_app/widgets/list_tile_list_view.dart';
 import 'package:expenses_app/widgets/show_aler_dialog.dart';
 import 'package:flutter/material.dart';
@@ -25,16 +26,16 @@ class HomePage extends StatelessWidget {
             color: Colors.grey[100],
           ),
         ),
-        body: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: CustomScrollView(
             slivers: [
-              SliverToBoxAdapter(
+              const SliverToBoxAdapter(
                 child: SizedBox(
                   height: 30,
                 ),
               ),
-              SliverToBoxAdapter(
+              const SliverToBoxAdapter(
                 child: Row(
                   children: [
                     Text(
@@ -47,29 +48,22 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              SliverToBoxAdapter(
+              const SliverToBoxAdapter(
                 child: SizedBox(
                   height: 30,
                 ),
               ),
               SliverToBoxAdapter(
-                child: BarGraph(
-                  sunAmount: 10,
-                  mxY: 200,
-                  monAmount: 100,
-                  wedAmount: 23,
-                  friAmount: 30,
-                  tueAmount: 34,
-                  thurAmount: 192,
-                  satAmount: 70,
+                child: ExpenseSummary(
+                  startOfWeek: startOfWeek(),
                 ),
               ),
-              SliverToBoxAdapter(
+              const SliverToBoxAdapter(
                 child: SizedBox(
                   height: 30,
                 ),
               ),
-              ListTileListView()
+              const ListTileListView()
             ],
           ),
         ),
