@@ -1,5 +1,7 @@
+import 'package:expenses_app/cubit/expense_data_cubit.dart';
 import 'package:expenses_app/models/item_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 class ListTileItem extends StatelessWidget {
@@ -19,7 +21,9 @@ class ListTileItem extends StatelessWidget {
           SlidableAction(
             foregroundColor: Colors.black,
             borderRadius: BorderRadius.circular(8),
-            onPressed: (context) {},
+            onPressed: (context) {
+              BlocProvider.of<ExpenseDataCubit>(context).deleteExpense(item);
+            },
             icon: Icons.delete,
             backgroundColor: Colors.red.shade300,
           ),

@@ -13,4 +13,9 @@ class ExpenseDataCubit extends Cubit<ExpenseDataState> {
     allExpenses.add(expense);
     emit(ExpenseDataSuccess());
   }
+
+  void deleteExpense(ItemModel expense) {
+    allExpenses.remove(expense);
+    emit(ExpenseDataSuccess());
+  }
 }
