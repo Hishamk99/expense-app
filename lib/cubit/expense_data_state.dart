@@ -4,3 +4,6 @@ part of 'expense_data_cubit.dart';
 sealed class ExpenseDataState {}
 
 final class ExpenseDataInitial extends ExpenseDataState {}
+final class ExpenseDataSuccess extends ExpenseDataState {}
+
+
