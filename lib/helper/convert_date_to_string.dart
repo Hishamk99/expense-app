@@ -32,3 +32,14 @@ String getNameDay(DateTime date) {
       return '';
   }
 }
+
+DateTime startOfWeek() {
+  DateTime? startOfWeek;
+  DateTime date = DateTime.now();
+  for (int i = 0; i < 7; i++) {
+    if (getNameDay(date.subtract(Duration(days: i))) == 'Sun') {
+      startOfWeek = date.subtract(Duration(days: i));
+    }
+  }
+  return startOfWeek!;
+}
