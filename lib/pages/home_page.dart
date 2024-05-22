@@ -53,7 +53,16 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               SliverToBoxAdapter(
-                child: BarGraph(),
+                child: BarGraph(
+                  sunAmount: 10,
+                  mxY: 200,
+                  monAmount: 100,
+                  wedAmount: 23,
+                  friAmount: 30,
+                  tueAmount: 34,
+                  thurAmount: 192,
+                  satAmount: 70,
+                ),
               ),
               SliverToBoxAdapter(
                 child: SizedBox(
