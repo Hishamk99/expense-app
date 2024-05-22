@@ -44,16 +44,6 @@ class BarGraph extends StatelessWidget {
                 ),
               ],
             ),
-            BarChartGroupData(
-              x: 1,
-              barRods: [
-                BarChartRodData(
-                  toY: 90,
-                  width: 25,
-                  color: Colors.grey[800],
-                ),
-              ],
-            ),
           ],
         ),
       ),
