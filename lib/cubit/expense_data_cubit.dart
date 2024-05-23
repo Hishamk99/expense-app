@@ -32,7 +32,7 @@ class ExpenseDataCubit extends Cubit<ExpenseDataState> {
     String date = convertDateToString(expense.date);
 
     dailyExpense.remove(date);
-      total -= expense.amount;
+    total -= expense.amount;
     allExpenses.remove(expense);
     emit(ExpenseDataSuccess());
   }

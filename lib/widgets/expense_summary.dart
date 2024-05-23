@@ -2,7 +2,6 @@ import 'package:expenses_app/cubit/expense_data_cubit.dart';
 import 'package:expenses_app/helper/convert_date_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'bar_graph.dart';
 
 class ExpenseSummary extends StatelessWidget {
