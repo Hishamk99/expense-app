@@ -10,6 +10,7 @@ class ExpenseDataCubit extends Cubit<ExpenseDataState> {
 
   List<ItemModel> allExpenses = [];
   Map<String, double> dailyExpense = {};
+  double total = 0;
 
   void addExpense(ItemModel expense) {
     allExpenses.add(expense);
@@ -23,6 +24,7 @@ class ExpenseDataCubit extends Cubit<ExpenseDataState> {
     } else {
       dailyExpense.addAll({date: amount});
     }
+    total += amount;
     emit(ExpenseDataSuccess());
   }
 
@@ -30,7 +32,7 @@ class ExpenseDataCubit extends Cubit<ExpenseDataState> {
     String date = convertDateToString(expense.date);
 
     dailyExpense.remove(date);
-    
+      total -= expense.amount;
     allExpenses.remove(expense);
     emit(ExpenseDataSuccess());
   }

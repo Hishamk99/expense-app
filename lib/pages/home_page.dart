@@ -12,11 +12,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var data = BlocProvider.of<ExpenseDataCubit>(context).allExpenses;
+    var total = BlocProvider.of<ExpenseDataCubit>(context).total;
 
     return BlocConsumer<ExpenseDataCubit, ExpenseDataState>(
       listener: (context, state) {
-         if (state is ExpenseDataSuccess) {
+        if (state is ExpenseDataSuccess) {
           data = BlocProvider.of<ExpenseDataCubit>(context).allExpenses;
+          total = BlocProvider.of<ExpenseDataCubit>(context).total;
         }
       },
       builder: (context, state) {
@@ -46,16 +48,16 @@ class HomePage extends StatelessWidget {
                       height: 30,
                     ),
                   ),
-                  const SliverToBoxAdapter(
+                  SliverToBoxAdapter(
                     child: Row(
                       children: [
-                        Text(
+                        const Text(
                           'Week Total: ',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text('\$34.5'),
+                        Text('\$$total'),
                       ],
                     ),
                   ),
@@ -74,7 +76,7 @@ class HomePage extends StatelessWidget {
                       height: 30,
                     ),
                   ),
-                   ListTileListView(data: data) ,
+                  ListTileListView(data: data),
                 ],
               ),
             ),
