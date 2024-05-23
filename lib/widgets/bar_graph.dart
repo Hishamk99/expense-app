@@ -1,4 +1,5 @@
 import 'package:expenses_app/bar%20graph/bar_data.dart';
+import 'package:expenses_app/widgets/get_buttom_tile.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -50,6 +51,12 @@ class BarGraph extends StatelessWidget {
             ),
             rightTitles: AxisTitles(
               sideTitles: SideTitles(showTitles: false),
+            ),
+            bottomTitles: AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: true,
+                getTitlesWidget: getButtomTile,
+              ),
             ),
           ),
           barGroups: myBarData.barData
