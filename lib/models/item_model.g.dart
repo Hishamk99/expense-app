@@ -19,7 +19,7 @@ class ItemModelAdapter extends TypeAdapter<ItemModel> {
     return ItemModel(
       name: fields[0] as String,
       amount: fields[1] as double,
-      date: fields[2] as DateTime,
+      date: fields[2] as String,
     );
   }
 

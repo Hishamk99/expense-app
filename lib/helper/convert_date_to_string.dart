@@ -1,10 +1,11 @@
-String convertDateToString(DateTime date) {
-  String year = date.year.toString();
-  String month = date.month.toString();
+String convertDateToString(String date) {
+  DateTime dateTime = DateTime.parse(date);
+  String year = dateTime.year.toString();
+  String month = dateTime.month.toString();
   if (month.length == 1) {
     month = '0$month';
   }
-  String day = date.day.toString();
+  String day = dateTime.day.toString();
   if (day.length == 1) {
     day = '0$day';
   }

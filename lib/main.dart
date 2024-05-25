@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 
-import 'cubit/expense_data_cubit.dart';
+import 'cubits/add_expense_cubit/expense_data_cubit.dart';
 
 void main() async {
+  debugPrint(DateTime.now().toString());
   await Hive.initFlutter();
   Hive.registerAdapter(ItemModelAdapter());
-  await Hive.openBox('expense');
-  
+  await Hive.openBox<ItemModel>('expense');
   runApp(const ExpenseApp());
 }
 

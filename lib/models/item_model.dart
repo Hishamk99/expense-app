@@ -8,7 +8,7 @@ class ItemModel extends HiveObject {
   @HiveField(1)
   final double amount;
   @HiveField(2)
-  final DateTime date;
+  final String date;
 
   ItemModel({
     required this.name,

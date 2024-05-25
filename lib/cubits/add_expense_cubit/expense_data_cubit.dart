@@ -2,6 +2,7 @@ import 'package:expenses_app/helper/convert_date_to_string.dart';
 import 'package:expenses_app/models/item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+//import 'package:hive_flutter/hive_flutter.dart';
 
 part 'expense_data_state.dart';
 
@@ -12,7 +13,12 @@ class ExpenseDataCubit extends Cubit<ExpenseDataState> {
   Map<String, double> dailyExpense = {};
   double total = 0;
 
-  void addExpense(ItemModel expense) {
+  void addExpense(ItemModel expense)async {
+
+    // var expenseBox = Hive.box<ItemModel>('expense');
+    // await expenseBox.add(expense);
+
+
     allExpenses.add(expense);
 
     double amount = expense.amount;

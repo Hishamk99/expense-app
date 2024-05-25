@@ -1,4 +1,4 @@
-import 'package:expenses_app/cubit/expense_data_cubit.dart';
+import 'package:expenses_app/cubits/add_expense_cubit/expense_data_cubit.dart';
 import 'package:expenses_app/models/item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -77,7 +77,7 @@ class _ShowAlertDialogState extends State<ShowAlertDialog> {
                 ItemModel(
                   name: name!,
                   amount: dollars + cets / 100,
-                  date: DateTime.now(),
+                  date: DateTime.now().toString(),
                 ),
               );
               Navigator.pop(context);
