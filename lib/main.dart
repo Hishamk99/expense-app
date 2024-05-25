@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 
 import 'cubits/add_expense_cubit/expense_data_cubit.dart';
+import 'cubits/expense_cubit/expenses_cubit.dart';
 
 void main() async {
   debugPrint(DateTime.now().toString());
@@ -19,8 +20,15 @@ class ExpenseApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ExpenseDataCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ExpenseDataCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ExpensesCubit(),
+        ),
+      ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         home: HomePage(),
