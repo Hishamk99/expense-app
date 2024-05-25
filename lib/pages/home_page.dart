@@ -7,12 +7,26 @@ import 'package:expenses_app/widgets/show_alert_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<ItemModel>? data;
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<ExpensesCubit>(context).fetchAllExpenses();
+    BlocProvider.of<ExpensesCubit>(context).dailyExpense();
+    data = BlocProvider.of<ExpensesCubit>(context).expenses ?? [];
+  }
+
+  @override
   Widget build(BuildContext context) {
-    List<ItemModel> data = BlocProvider.of<ExpensesCubit>(context).expenses ?? [];
+
 
     return BlocConsumer<ExpensesCubit, ExpensesState>(
       listener: (context, state) {
@@ -47,10 +61,10 @@ class HomePage extends StatelessWidget {
                       height: 30,
                     ),
                   ),
-                 const SliverToBoxAdapter(
+                  const SliverToBoxAdapter(
                     child: Row(
                       children: [
-                         Text(
+                        Text(
                           'Week Total: ',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -75,7 +89,7 @@ class HomePage extends StatelessWidget {
                       height: 30,
                     ),
                   ),
-                  ListTileListView(data: data),
+                  ListTileListView(data: data ?? []),
                 ],
               ),
             ),

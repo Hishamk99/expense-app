@@ -83,6 +83,7 @@ class _ShowAlertDialogState extends State<ShowAlertDialog> {
               );
               Navigator.pop(context);
               BlocProvider.of<ExpensesCubit>(context).fetchAllExpenses();
+              BlocProvider.of<ExpensesCubit>(context).dailyExpense();
             }
           },
           child: const Text(
