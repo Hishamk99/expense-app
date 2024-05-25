@@ -1,4 +1,3 @@
-import 'package:expenses_app/helper/convert_date_to_string.dart';
 import 'package:expenses_app/models/item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,15 +15,6 @@ class AddExpenseCubit extends Cubit<ExpenseDataState> {
     var expenseBox = Hive.box<ItemModel>('expense');
     await expenseBox.add(expense);
 
-    emit(AddExpenseSuccess());
-  }
-
-  void deleteExpense(ItemModel expense) {
-    String date = convertDateToString(expense.date);
-
-    dailyExpense.remove(date);
-    total -= expense.amount;
-    //allExpenses.remove(expense);
     emit(AddExpenseSuccess());
   }
 }

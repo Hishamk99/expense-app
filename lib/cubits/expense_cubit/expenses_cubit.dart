@@ -9,11 +9,10 @@ class ExpensesCubit extends Cubit<ExpensesState> {
   ExpensesCubit() : super(ExpensesInitial());
 
   List<ItemModel>? expenses;
-  fetchAllExpenses() {
+  void fetchAllExpenses() {
     var expenseBox = Hive.box<ItemModel>('expense');
 
     expenses = expenseBox.values.toList();
     emit(ExpensesSuccess());
-    return expenses;
   }
 }

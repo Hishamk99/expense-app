@@ -1,4 +1,3 @@
-import 'package:expenses_app/cubits/add_expense_cubit/expense_data_cubit.dart';
 import 'package:expenses_app/cubits/expense_cubit/expenses_cubit.dart';
 import 'package:expenses_app/helper/convert_date_to_string.dart';
 import 'package:expenses_app/models/item_model.dart';
@@ -13,14 +12,12 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<ItemModel> data = BlocProvider.of<ExpensesCubit>(context).fetchAllExpenses() ?? [];
-    var total = BlocProvider.of<AddExpenseCubit>(context).total;
+    List<ItemModel> data = BlocProvider.of<ExpensesCubit>(context).expenses ?? [];
 
-    return BlocConsumer<AddExpenseCubit, ExpenseDataState>(
+    return BlocConsumer<ExpensesCubit, ExpensesState>(
       listener: (context, state) {
-        if (state is AddExpenseSuccess) {
-          data = BlocProvider.of<ExpensesCubit>(context).fetchAllExpenses() ?? [];
-          total = BlocProvider.of<AddExpenseCubit>(context).total;
+        if (state is ExpensesSuccess) {
+          data = BlocProvider.of<ExpensesCubit>(context).expenses ?? [];
         }
       },
       builder: (context, state) {
@@ -50,16 +47,16 @@ class HomePage extends StatelessWidget {
                       height: 30,
                     ),
                   ),
-                  SliverToBoxAdapter(
+                 const SliverToBoxAdapter(
                     child: Row(
                       children: [
-                        const Text(
+                         Text(
                           'Week Total: ',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text('\$$total'),
+                        Text('\$0'),
                       ],
                     ),
                   ),
