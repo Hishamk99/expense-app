@@ -29,8 +29,8 @@ class ExpenseSummary extends StatelessWidget {
     String saturday = convertDateToString(
         startOfWeek.add(const Duration(days: 6)).toString());
     Map<String, double> dailyExpense =
-        BlocProvider.of<ExpenseDataCubit>(context).dailyExpense;
-    return BlocConsumer<ExpenseDataCubit, ExpenseDataState>(
+        BlocProvider.of<AddExpenseCubit>(context).dailyExpense;
+    return BlocConsumer<AddExpenseCubit, ExpenseDataState>(
       listener: (context, state) {},
       builder: (context, state) {
         return BarGraph(

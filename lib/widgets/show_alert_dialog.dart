@@ -73,7 +73,7 @@ class _ShowAlertDialogState extends State<ShowAlertDialog> {
           onPressed: () {
             if (formKey.currentState!.validate()) {
               formKey.currentState!.save();
-              BlocProvider.of<ExpenseDataCubit>(context).addExpense(
+              BlocProvider.of<AddExpenseCubit>(context).addExpense(
                 ItemModel(
                   name: name!,
                   amount: dollars + cets / 100,

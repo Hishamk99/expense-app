@@ -2,36 +2,21 @@ import 'package:expenses_app/helper/convert_date_to_string.dart';
 import 'package:expenses_app/models/item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-//import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 part 'expense_data_state.dart';
 
-class ExpenseDataCubit extends Cubit<ExpenseDataState> {
-  ExpenseDataCubit() : super(ExpenseDataInitial());
+class AddExpenseCubit extends Cubit<ExpenseDataState> {
+  AddExpenseCubit() : super(ExpenseDataInitial());
 
-  List<ItemModel> allExpenses = [];
   Map<String, double> dailyExpense = {};
   double total = 0;
 
-  void addExpense(ItemModel expense)async {
+  void addExpense(ItemModel expense) async {
+    var expenseBox = Hive.box<ItemModel>('expense');
+    await expenseBox.add(expense);
 
-    // var expenseBox = Hive.box<ItemModel>('expense');
-    // await expenseBox.add(expense);
-
-
-    allExpenses.add(expense);
-
-    double amount = expense.amount;
-    String date = convertDateToString(expense.date);
-    if (dailyExpense.containsKey(date)) {
-      double current = dailyExpense[date]! + amount;
-
-      dailyExpense[date] = current;
-    } else {
-      dailyExpense.addAll({date: amount});
-    }
-    total += amount;
-    emit(ExpenseDataSuccess());
+    emit(AddExpenseSuccess());
   }
 
   void deleteExpense(ItemModel expense) {
@@ -39,7 +24,7 @@ class ExpenseDataCubit extends Cubit<ExpenseDataState> {
 
     dailyExpense.remove(date);
     total -= expense.amount;
-    allExpenses.remove(expense);
-    emit(ExpenseDataSuccess());
+    //allExpenses.remove(expense);
+    emit(AddExpenseSuccess());
   }
 }

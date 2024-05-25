@@ -23,7 +23,7 @@ class ExpenseApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => ExpenseDataCubit(),
+          create: (context) => AddExpenseCubit(),
         ),
         BlocProvider(
           create: (context) => ExpensesCubit(),

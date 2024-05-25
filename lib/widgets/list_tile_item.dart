@@ -1,4 +1,4 @@
-import 'package:expenses_app/cubits/add_expense_cubit/expense_data_cubit.dart';
+import 'package:expenses_app/cubits/expense_cubit/expenses_cubit.dart';
 import 'package:expenses_app/models/item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,7 +22,8 @@ class ListTileItem extends StatelessWidget {
             foregroundColor: Colors.black,
             borderRadius: BorderRadius.circular(8),
             onPressed: (context) {
-              BlocProvider.of<ExpenseDataCubit>(context).deleteExpense(item);
+              item.delete();
+              BlocProvider.of<ExpensesCubit>(context).fetchAllExpenses();
             },
             icon: Icons.delete,
             backgroundColor: Colors.red.shade300,

@@ -1,5 +1,7 @@
 import 'package:expenses_app/cubits/add_expense_cubit/expense_data_cubit.dart';
+import 'package:expenses_app/cubits/expense_cubit/expenses_cubit.dart';
 import 'package:expenses_app/helper/convert_date_to_string.dart';
+import 'package:expenses_app/models/item_model.dart';
 import 'package:expenses_app/widgets/expense_summary.dart';
 import 'package:expenses_app/widgets/list_tile_list_view.dart';
 import 'package:expenses_app/widgets/show_alert_dialog.dart';
@@ -11,14 +13,14 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var data = BlocProvider.of<ExpenseDataCubit>(context).allExpenses;
-    var total = BlocProvider.of<ExpenseDataCubit>(context).total;
+    List<ItemModel> data = BlocProvider.of<ExpensesCubit>(context).fetchAllExpenses() ?? [];
+    var total = BlocProvider.of<AddExpenseCubit>(context).total;
 
-    return BlocConsumer<ExpenseDataCubit, ExpenseDataState>(
+    return BlocConsumer<AddExpenseCubit, ExpenseDataState>(
       listener: (context, state) {
-        if (state is ExpenseDataSuccess) {
-          data = BlocProvider.of<ExpenseDataCubit>(context).allExpenses;
-          total = BlocProvider.of<ExpenseDataCubit>(context).total;
+        if (state is AddExpenseSuccess) {
+          data = BlocProvider.of<ExpensesCubit>(context).fetchAllExpenses() ?? [];
+          total = BlocProvider.of<AddExpenseCubit>(context).total;
         }
       },
       builder: (context, state) {
