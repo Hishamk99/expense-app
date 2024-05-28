@@ -11,7 +11,6 @@ class ExpenseSummary extends StatelessWidget {
   });
 
   final DateTime startOfWeek;
-
   @override
   Widget build(BuildContext context) {
     String sunday = convertDateToString(
@@ -32,7 +31,7 @@ class ExpenseSummary extends StatelessWidget {
         BlocProvider.of<ExpensesCubit>(context).dailyExpenseSummary;
     return BlocConsumer<ExpensesCubit, ExpensesState>(
       listener: (context, state) {
-        if (state is ExpensesMpSuccess) {
+        if (state is EditMpSuccess) {
           daily = BlocProvider.of<ExpensesCubit>(context).dailyExpenseSummary;
         }
       },

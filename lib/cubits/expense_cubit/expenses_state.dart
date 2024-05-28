@@ -4,5 +4,10 @@ part of 'expenses_cubit.dart';
 sealed class ExpensesState {}
 
 final class ExpensesInitial extends ExpensesState {}
+
 final class ExpensesSuccess extends ExpensesState {}
-final class ExpensesMpSuccess extends ExpensesState {}
+
+
+final class AddExpenseSuccess extends ExpensesState {}
+final class EditMpSuccess extends ExpensesState {}
+

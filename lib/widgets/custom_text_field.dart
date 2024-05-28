@@ -6,9 +6,11 @@ class CustomTextFormField extends StatelessWidget {
     required this.hintText,
     this.textInputType = TextInputType.number,
     this.onSaved,
+   this. maxLen = 2
   });
   final String hintText;
   final TextInputType textInputType;
+  final int maxLen;
   final void Function(String?)? onSaved;
   @override
   Widget build(BuildContext context) {
@@ -21,6 +23,7 @@ class CustomTextFormField extends StatelessWidget {
       },
       onSaved: onSaved,
       keyboardType: textInputType,
+      maxLength: maxLen,
       decoration: InputDecoration(
         hintText: hintText,
       ),

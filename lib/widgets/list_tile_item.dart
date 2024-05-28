@@ -24,6 +24,7 @@ class ListTileItem extends StatelessWidget {
             onPressed: (context) {
               item.delete();
               BlocProvider.of<ExpensesCubit>(context).fetchAllExpenses();
+              BlocProvider.of<ExpensesCubit>(context).removeDailyExpense(item);
             },
             icon: Icons.delete,
             backgroundColor: Colors.red.shade300,

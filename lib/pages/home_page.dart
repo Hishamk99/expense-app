@@ -16,22 +16,24 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<ItemModel>? data;
+  double total = 0;
+  Map<String, double> daily = {};
   @override
   void initState() {
     super.initState();
     BlocProvider.of<ExpensesCubit>(context).fetchAllExpenses();
     BlocProvider.of<ExpensesCubit>(context).dailyExpense();
-    data = BlocProvider.of<ExpensesCubit>(context).expenses ?? [];
+    total = BlocProvider.of<ExpensesCubit>(context).total;
   }
 
   @override
   Widget build(BuildContext context) {
-
-
     return BlocConsumer<ExpensesCubit, ExpensesState>(
       listener: (context, state) {
-        if (state is ExpensesSuccess) {
-          data = BlocProvider.of<ExpensesCubit>(context).expenses ?? [];
+        total = BlocProvider.of<ExpensesCubit>(context).total;
+
+        if (state is AddExpenseSuccess) {
+          BlocProvider.of<ExpensesCubit>(context).fetchAllExpenses();
         }
       },
       builder: (context, state) {
@@ -61,16 +63,16 @@ class _HomePageState extends State<HomePage> {
                       height: 30,
                     ),
                   ),
-                  const SliverToBoxAdapter(
+                  SliverToBoxAdapter(
                     child: Row(
                       children: [
-                        Text(
+                        const Text(
                           'Week Total: ',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text('\$0'),
+                        Text('\$$total'),
                       ],
                     ),
                   ),
@@ -89,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                       height: 30,
                     ),
                   ),
-                  ListTileListView(data: data ?? []),
+                  const ListTileListView(),
                 ],
               ),
             ),
